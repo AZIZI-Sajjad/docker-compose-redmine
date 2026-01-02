@@ -17,6 +17,9 @@ nano -c .env
 # docker compose --file ./docker-compose.yml --project-name redmine-project up
 # docker compose --file ./docker-compose.yml --project-name redmine-project down
 # docker compose --file ./docker-compose.yml --project-name redmine-project logs -f
+
+# Open navigator : 
+http://<Docker_Host_IP>:8026/redmine
 ```
 
 
