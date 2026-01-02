@@ -1,7 +1,7 @@
-# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project config
-# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project up
-# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project down
-# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project logs -f
+# docker compose --file ./docker-compose-redmine/docker-compose.yml --project-name redmine-project config
+# docker compose --file ./docker-compose-redmine/docker-compose.yml --project-name redmine-project up
+# docker compose --file ./docker-compose-redmine/docker-compose.yml --project-name redmine-project down
+# docker compose --file ./docker-compose-redmine/docker-compose.yml --project-name redmine-project logs -f
 
 
 services:
