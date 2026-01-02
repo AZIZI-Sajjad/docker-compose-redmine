@@ -12,6 +12,9 @@ cd docker-compose-redmine
 # 3- Define Vriables in .env  
 nano -c .env
 
+# 4- create Volumes' folder:  
+mkdir redmine && mkdir mysql
+
 # 4- run the docker compose project :
 # docker compose --file ./docker-compose.yml --project-name redmine-project config
 # docker compose --file ./docker-compose.yml --project-name redmine-project up
