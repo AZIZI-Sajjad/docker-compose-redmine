@@ -22,7 +22,7 @@ mkdir redmine && mkdir mysql
 # docker compose --file ./docker-compose.yml --project-name redmine-project logs -f
 
 # Open navigator : 
-http://<Docker_Host_IP>:8026/redmine
+http://<Docker_Host_IP>:REDMINE_HOST_PORT/redmine
 ```
 
 
