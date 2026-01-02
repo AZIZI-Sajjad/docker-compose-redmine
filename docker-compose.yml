@@ -1,0 +1,51 @@
+# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project config
+# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project up
+# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project down
+# docker compose --file /var/docker/docker-compose/docker-compose-redmine/docker-compose.yml --project-name redmine-project logs -f
+
+
+services:
+  mysql:
+    # image: ${IMAGE_DB}
+    build:
+      context: .
+      dockerfile: ${MARIADB_DOKCER_FILE}
+    container_name: ${DB_CONTAINER_NAME}
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ${VOL_DB}:/var/lib/mysql
+    networks:
+      redmine-network:
+        ipv4_address: ${DB_CONTAINER_IP}
+
+  redmine:
+    # image: ${IMAGE_REDMINE}
+    build:
+      context: .
+      dockerfile: ${REDMINE_DOKCER_FILE}
+    container_name: ${REDMINE_CONTAINER_NAME}
+    restart: always
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+    volumes:
+      - ${VOL_REDMINE_DATA}:/home/redmine/data
+      - ${VOL_REDMINE_LOGS}:/var/log/redmine
+    ports:
+      - "${REDMINE_HOST_PORT}:${REDMINE_CONT_PORT}"
+    networks:
+      redmine-network:
+        ipv4_address: ${REDMINE_CONTAINER_IP}
+
+networks:
+  redmine-network:
+    driver: bridge
+    name: ${NETWORK_NAME}
+    ipam:
+      driver: default
+      config:
+        - subnet: ${NET_SUBNET}
+          gateway: ${NET_GATEWAY}
